@@ -253,10 +253,10 @@ demo = {
         // lbd.startAnimationForLineChart(chartHours);
 
         var data = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            labels: ['Día 1', 'Día 2', 'Día 3', 'Día 4', 'Día 5', 'Día 6', 'Hoy'],
             series: [
-                [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-                [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
+                [1, 5, 17, 14, 20, 23, 18],
+                [3, -14, -7, 16, 24, -8, -10]
             ]
         };
 
