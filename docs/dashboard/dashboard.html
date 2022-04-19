@@ -567,4 +567,58 @@
     });
 </script>
 
+<!-- Cosas de Firebase -->
+<script type="module">
+      
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";  
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+   
+    const firebaseConfig = {  
+      apiKey: "AIzaSyC7FQzl3ers05n809FplN6ghejKrU0wFh4",  
+      authDomain: "firebirdbackend.firebaseapp.com",  
+      projectId: "firebirdbackend",  
+      storageBucket: "firebirdbackend.appspot.com",  
+      messagingSenderId: "362751348570",  
+      appId: "1:362751348570:web:fb21580d01aabcbc356d63",  
+      measurementId: "G-ZVXW3PC2X3"  
+    };
+    
+    const app = initializeApp(firebaseConfig);  
+    const analytics = getAnalytics(app);
+
+    // Autentificación de usuarios
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log("Usuario" + user.uid + "logueado");
+        const uid = user.uid;        
+    } else {
+        // Si estamos aquí, el usuario no está logueado
+        console.log("Usuario no logueado");
+        console.log("Redirigiendo a página de login")
+        
+        window.location.replace("../login/index.html");
+    }
+    });
+
+    // Firestore
+
+    const db = getFirestore();
+
+    // Para acceder al documento en /public/global, doc(db, "public/global")
+    const docRef = doc(db, "public", "test1");
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+    } else {
+    // El documento no existe
+    console.log("No such document!");
+}
+  
+  </script>
+
 </html>
